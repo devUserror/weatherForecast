@@ -8,9 +8,6 @@ class CityView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var forecastList = snapshot.data!.list;
-    var formattedDate =
-        DateTime.fromMillisecondsSinceEpoch(snapshot.data!.list![0].dt! * 1000);
     return Column(
       children: <Widget>[
         Text(
@@ -22,7 +19,8 @@ class CityView extends StatelessWidget {
           ),
         ),
         Text(
-          Util.getFormattedDate(formattedDate),
+          Util.getFormattedDate(DateTime.fromMillisecondsSinceEpoch(
+              snapshot.data!.list![0].dt! * 1000)),
           style: TextStyle(fontSize: 15.0),
         ),
       ],
