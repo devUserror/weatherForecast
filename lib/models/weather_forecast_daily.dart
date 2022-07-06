@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:weather_forecast_app/utilities/constants.dart';
+
 WeatherForecast weatherFromJson(String str) =>
     WeatherForecast.fromJson(json.decode(str));
 
@@ -108,6 +110,9 @@ class WeatherList {
         pop: json['pop'].toDouble(),
         rain: json['rain'],
       );
+  String getIconUrl(){
+    return '${Constants.WEATHER_IMAGES_URL}${weather![0].icon}.png';
+  }
 }
 
 class Temp {
