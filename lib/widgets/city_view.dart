@@ -9,6 +9,7 @@ class CityView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // var forecastList = snapshot.data!.list;
+    // ??Как избавить от этой переменной??
     var formattedDate =
         DateTime.fromMillisecondsSinceEpoch(snapshot.data!.list![0].dt! * 1000);
     return Column(
@@ -22,6 +23,7 @@ class CityView extends StatelessWidget {
           ),
         ),
         Text(
+          // ??И вывести сюда??
           Util.getFormattedDate(formattedDate),
           style: TextStyle(fontSize: 15.0),
         ),
