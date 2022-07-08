@@ -14,7 +14,7 @@ class CityView extends StatelessWidget {
           '${snapshot.data!.city!.name}, ${snapshot.data!.city!.country}',
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 28.0,
+            fontSize: 30.0,
             color: Colors.black87,
           ),
         ),
