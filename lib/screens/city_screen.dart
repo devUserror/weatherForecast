@@ -1,4 +1,4 @@
-import 'dart:ffi';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
@@ -15,44 +15,44 @@ class _CityScreenState extends State<CityScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: SafeArea(
-          child: Column(
-            children: <Widget>[
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: TextField(
-                    cursorColor: Colors.blueGrey[800],
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      hintText: 'Enter city name',
-                      hintStyle: TextStyle(color: Colors.white),
-                      filled: true,
-                      fillColor: Colors.black87,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                          borderSide: BorderSide.none),
-                      icon: Icon(Icons.location_city,
-                          color: Colors.black87, size: 40.0),
-                    ),
-                    onChanged: (value) {
-                      cityName = value;
-                    },
-                  ),
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                cursorColor: Colors.blueGrey[800],
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
+                  hintText: 'Enter city name',
+                  hintStyle: TextStyle(color: Colors.white),
+                  filled: true,
+                  fillColor: Colors.black87,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                      borderSide: BorderSide.none),
+                  icon: Icon(Icons.location_city, color: Colors.black87, size: 40.0),
                 ),
-              ),
-              TextButton(
-                child: Text(
-                  'CHECK THE WEATHER',
-                  style: TextStyle(fontSize: 20.0, color: Colors.black87),
-                ),
-                onPressed: () {
-                  Navigator.pop(context, cityName);
+                onChanged: (value) {
+                  setState(() {
+                    cityName = value;
+                    log(cityName);
+                  });
                 },
               ),
-            ],
-          ),
+            ),
+            TextButton(
+              child: const Text(
+                'CHECK THE WEATHER',
+                style: TextStyle(fontSize: 20.0, color: Colors.black87),
+              ),
+              onPressed: () {
+                setState(() {
+                  Navigator.pop(context, cityName);
+                });
+              },
+            ),
+          ],
         ),
       ),
     );
