@@ -14,7 +14,7 @@ class TempView extends StatelessWidget {
         children: <Widget>[
           Image.network(
             snapshot.data!.list![0].getIconUrl(),
-            scale: 0.4,
+            scale: 0.35
           ),
           SizedBox(width: 20.0),
           Column(
@@ -22,14 +22,14 @@ class TempView extends StatelessWidget {
               Text(
                 '${snapshot.data!.list![0].temp!.day!.toStringAsFixed(0)}°C',
                 style: TextStyle(
-                  fontSize: 54.0,
+                  fontSize: 60.0,
                   color: Colors.black87,
                 ),
               ),
               Text(
                 snapshot.data!.list![0].weather![0].description!.toUpperCase(),
                 style: TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   color: Colors.black87,
                 ),
               ),

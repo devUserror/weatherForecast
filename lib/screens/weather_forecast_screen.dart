@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather_forecast_app/api/weather_api.dart';
 import 'package:weather_forecast_app/models/weather_forecast_daily.dart';
+import 'package:weather_forecast_app/widgets/bottom_list_view.dart';
 import 'package:weather_forecast_app/widgets/city_view.dart';
 import 'package:weather_forecast_app/widgets/detail_view.dart';
 import 'package:weather_forecast_app/widgets/temp_view.dart';
@@ -48,12 +49,14 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
               if (snapshot.hasData) {
                 return Column(
                   children: <Widget>[
-                    SizedBox(height: 50.0),
+                    SizedBox(height: 25.0),
                     CityView(snapshot: snapshot),
-                    SizedBox(height: 50.0),
+                    SizedBox(height: 25.0),
                     TempView(snapshot: snapshot),
-                    SizedBox(height: 50.0),
+                    SizedBox(height: 25.0),
                     DetailView(snapshot: snapshot),
+                    SizedBox(height: 50.0),
+                    BottomListView(snapshot: snapshot)
                   ],
                 );
               } else {
