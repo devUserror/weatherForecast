@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather_forecast_app/api/weather_api.dart';
 import 'package:weather_forecast_app/models/weather_forecast_daily.dart';
+import 'package:weather_forecast_app/screens/city_screen.dart';
 import 'package:weather_forecast_app/widgets/bottom_list_view.dart';
 import 'package:weather_forecast_app/widgets/city_view.dart';
 import 'package:weather_forecast_app/widgets/detail_view.dart';
@@ -17,13 +20,13 @@ class WeatherForecastScreen extends StatefulWidget {
 class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
   late Future<WeatherForecast> forecastObject;
 
-  final String _cityName = 'Tyumen';
+  String _cityName = 'Tyumen';
+  // String _cityName;
 
   @override
   void initState() {
     super.initState();
-    forecastObject =
-        WeatherApi().fetchWeatherForecastWithCity(cityName: _cityName);
+    forecastObject = WeatherApi().fetchWeatherForecastWithCity(cityName: _cityName);
   }
 
   @override
@@ -38,7 +41,22 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
           onPressed: () {},
         ),
         actions: <Widget>[
-          IconButton(icon: const Icon(Icons.location_city), onPressed: () {}),
+          IconButton(
+              icon: const Icon(Icons.location_city),
+              onPressed: () async {
+                var tappedName =
+                    await Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const CityScreen();
+                }));
+                if (tappedName != null) {
+                  //необходимо принудительно вызвать перестроение виджетов на основе новых данных
+                  ///для этого юзается метод [setState]
+                  setState(() {
+                    _cityName = tappedName;
+                    forecastObject = WeatherApi().fetchWeatherForecastWithCity(cityName: _cityName);
+                  });
+                }
+              }),
         ],
       ),
       body: ListView(
@@ -49,13 +67,13 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
               if (snapshot.hasData) {
                 return Column(
                   children: <Widget>[
-                    SizedBox(height: 25.0),
+                    const SizedBox(height: 25.0),
                     CityView(snapshot: snapshot),
-                    SizedBox(height: 25.0),
+                    const SizedBox(height: 25.0),
                     TempView(snapshot: snapshot),
-                    SizedBox(height: 25.0),
+                    const SizedBox(height: 25.0),
                     DetailView(snapshot: snapshot),
-                    SizedBox(height: 50.0),
+                    const SizedBox(height: 50.0),
                     BottomListView(snapshot: snapshot)
                   ],
                 );
