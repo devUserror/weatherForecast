@@ -6,23 +6,19 @@ import '../models/weather_forecast_daily.dart';
 class DetailView extends StatelessWidget {
   final AsyncSnapshot<WeatherForecast> snapshot;
 
-  const DetailView({required this.snapshot});
+  const DetailView({Key? key, required this.snapshot}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Util.getItem(FontAwesomeIcons.temperatureThreeQuarters,
-              snapshot.data!.list![0].pressure! * 0.750062.round(), 'mm Hg'),
-          Util.getItem(FontAwesomeIcons.cloudRain,
-              snapshot.data!.list![0].humidity!, '%'),
-          Util.getItem(FontAwesomeIcons.wind,
-              snapshot.data!.list![0].speed!.toInt(), 'm / s'),
-        ],
-      ),
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Util.getItem(FontAwesomeIcons.temperatureThreeQuarters,
+            snapshot.data!.list![0].pressure! * 0.750062.round(), 'mm Hg'),
+        Util.getItem(FontAwesomeIcons.cloudRain, snapshot.data!.list![0].humidity!, '%'),
+        Util.getItem(FontAwesomeIcons.wind, snapshot.data!.list![0].speed!.toInt(), 'm / s'),
+      ],
     );
   }
 }

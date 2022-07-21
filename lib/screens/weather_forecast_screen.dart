@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather_forecast_app/api/weather_api.dart';
@@ -11,7 +9,8 @@ import 'package:weather_forecast_app/widgets/detail_view.dart';
 import 'package:weather_forecast_app/widgets/temp_view.dart';
 
 class WeatherForecastScreen extends StatefulWidget {
-  const WeatherForecastScreen({Key? key}) : super(key: key);
+  final WeatherForecast locationWeather;
+  const WeatherForecastScreen({Key? key, required this.locationWeather}) : super(key: key);
 
   @override
   State<WeatherForecastScreen> createState() => _WeatherForecastScreenState();
@@ -26,7 +25,10 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
   @override
   void initState() {
     super.initState();
-    forecastObject = WeatherApi().fetchWeatherForecastWithCity(cityName: _cityName);
+
+    if (widget.locationWeather.city != null) {
+      forecastObject = WeatherApi().fetchWeatherForecast();
+    }
   }
 
   @override
@@ -38,7 +40,11 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.my_location),
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              forecastObject = WeatherApi().fetchWeatherForecast();
+            });
+          },
         ),
         actions: <Widget>[
           IconButton(
@@ -53,7 +59,8 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                   ///для этого юзается метод [setState]
                   setState(() {
                     _cityName = tappedName;
-                    forecastObject = WeatherApi().fetchWeatherForecastWithCity(cityName: _cityName);
+                    forecastObject =
+                        WeatherApi().fetchWeatherForecast(cityName: _cityName, isCity: true);
                   });
                 }
               }),
