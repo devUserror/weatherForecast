@@ -3,8 +3,8 @@ import '../utilities/forecast_util.dart';
 
 Widget forecastCard(AsyncSnapshot snapshot, int index) {
   var dayOfWeek = '';
-  var fullDate = Util.getFormattedDate(DateTime.fromMillisecondsSinceEpoch(
-      snapshot.data!.list![index].dt * 1000));
+  var fullDate = Util.getFormattedDate(
+      DateTime.fromMillisecondsSinceEpoch(snapshot.data!.list![index].dt * 1000));
   dayOfWeek = fullDate.split(',')[0];
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
@@ -15,7 +15,7 @@ Widget forecastCard(AsyncSnapshot snapshot, int index) {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             dayOfWeek,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 25,
               color: Colors.white,
             ),
@@ -33,7 +33,7 @@ Widget forecastCard(AsyncSnapshot snapshot, int index) {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       '${snapshot.data!.list![index].temp.min.toStringAsFixed(0)}°C',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 30.0,
                         color: Colors.white,
                       ),

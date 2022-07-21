@@ -19,9 +19,9 @@ class CityView extends StatelessWidget {
           ),
         ),
         Text(
-          Util.getFormattedDate(DateTime.fromMillisecondsSinceEpoch(
-              snapshot.data!.list![0].dt! * 1000)),
-          style: TextStyle(fontSize: 15.0),
+          Util.getFormattedDate(
+              DateTime.fromMillisecondsSinceEpoch(snapshot.data!.list![0].dt! * 1000)),
+          style: const TextStyle(fontSize: 15.0),
         ),
       ],
     );

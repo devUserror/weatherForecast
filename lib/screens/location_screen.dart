@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather_forecast_app/api/weather_api.dart';
@@ -13,12 +15,14 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   void getLocationData() async {
     var weatherInfo = await WeatherApi().fetchWeatherForecast();
-
-    if(weatherInfo == null) {
-      print('WeatherInfo was null: $weatherInfo');
+    if (weatherInfo.city == null) {
+      log('WeatherInfo was null: $weatherInfo');
       return;
     }
+    navigate(weatherInfo: weatherInfo);
+  }
 
+  void navigate({required weatherInfo}) {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return WeatherForecastScreen(locationWeather: weatherInfo);
     }));
@@ -32,7 +36,7 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: SpinKitDoubleBounce(color: Colors.black87, size: 100.0),
       ),
