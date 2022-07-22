@@ -14,8 +14,10 @@ class BottomListView extends StatelessWidget {
       children: <Widget>[
         Text(
           '7-Day Weather forecast'.toUpperCase(),
-          style:
-              const TextStyle(fontSize: 20.0, color: Colors.black87, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+              fontSize: 20.0,
+              color: Colors.blueGrey,
+              fontWeight: FontWeight.bold),
         ),
         Container(
           height: 140,
@@ -27,7 +29,7 @@ class BottomListView extends StatelessWidget {
             itemBuilder: (context, index) => Container(
               width: MediaQuery.of(context).size.width / 2.7,
               height: 160,
-              color: Colors.black87,
+              color: Colors.white,
               child: forecastCard(snapshot, index),
             ),
           ),

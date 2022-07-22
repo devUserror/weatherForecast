@@ -15,6 +15,7 @@ class _CityScreenState extends State<CityScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -22,16 +23,17 @@ class _CityScreenState extends State<CityScreen> {
               padding: const EdgeInsets.all(20.0),
               child: TextField(
                 cursorColor: Colors.blueGrey[800],
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.blueGrey),
                 decoration: const InputDecoration(
                   hintText: 'Enter city name',
-                  hintStyle: TextStyle(color: Colors.white),
+                  hintStyle: TextStyle(color: Colors.blueGrey),
                   filled: true,
-                  fillColor: Colors.black87,
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(12.0)),
                       borderSide: BorderSide.none),
-                  icon: Icon(Icons.location_city, color: Colors.black87, size: 40.0),
+                  icon: Icon(Icons.location_city,
+                      color: Colors.white, size: 40.0),
                 ),
                 onChanged: (value) {
                   setState(() {
@@ -44,7 +46,7 @@ class _CityScreenState extends State<CityScreen> {
             TextButton(
               child: const Text(
                 'CHECK THE WEATHER',
-                style: TextStyle(fontSize: 20.0, color: Colors.black87),
+                style: TextStyle(fontSize: 20.0, color: Colors.white),
               ),
               onPressed: () {
                 setState(() {

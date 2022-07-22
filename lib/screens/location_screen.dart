@@ -14,12 +14,12 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen> {
   void getLocationData() async {
-    var weatherInfo = await WeatherApi().fetchWeatherForecast();
-    if (weatherInfo.city == null) {
-      log('WeatherInfo was null: $weatherInfo');
-      return;
+    try {
+      var weatherInfo = await WeatherApi().fetchWeatherForecast();
+      navigate(weatherInfo: weatherInfo);
+    } catch (e) {
+      print('$e');
     }
-    navigate(weatherInfo: weatherInfo);
   }
 
   void navigate({required weatherInfo}) {

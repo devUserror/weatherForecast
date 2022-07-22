@@ -15,13 +15,13 @@ class CityView extends StatelessWidget {
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 30.0,
-            color: Colors.black87,
+            color: Colors.white,
           ),
         ),
         Text(
-          Util.getFormattedDate(
-              DateTime.fromMillisecondsSinceEpoch(snapshot.data!.list![0].dt! * 1000)),
-          style: const TextStyle(fontSize: 15.0),
+          Util.getFormattedDate(DateTime.fromMillisecondsSinceEpoch(
+              snapshot.data!.list![0].dt! * 1000)),
+          style: const TextStyle(fontSize: 15.0, color: Colors.white),
         ),
       ],
     );

@@ -9,13 +9,13 @@ class Util {
   static getItem(IconData iconData, int value, String units) {
     return Column(
       children: <Widget>[
-        Icon(iconData, color: Colors.black87, size: 28.0),
+        Icon(iconData, color: Colors.white, size: 28.0),
         const SizedBox(height: 10.0),
         Text(
           '$value',
           style: const TextStyle(
             fontSize: 20.0,
-            color: Colors.black87,
+            color: Colors.white,
           ),
         ),
         const SizedBox(height: 10.0),
@@ -23,7 +23,7 @@ class Util {
           units,
           style: const TextStyle(
             fontSize: 15.0,
-            color: Colors.black87,
+            color: Colors.white,
           ),
         ),
       ],

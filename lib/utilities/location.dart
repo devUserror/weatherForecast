@@ -1,9 +1,6 @@
 import 'package:geolocator/geolocator.dart';
 
-// Получаем текущую геопозицию
-
 class Location {
-
   late double latitude;
   late double longitude;
 

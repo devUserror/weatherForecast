@@ -16,8 +16,10 @@ class DetailView extends StatelessWidget {
       children: <Widget>[
         Util.getItem(FontAwesomeIcons.temperatureThreeQuarters,
             snapshot.data!.list![0].pressure! * 0.750062.round(), 'mm Hg'),
-        Util.getItem(FontAwesomeIcons.cloudRain, snapshot.data!.list![0].humidity!, '%'),
-        Util.getItem(FontAwesomeIcons.wind, snapshot.data!.list![0].speed!.toInt(), 'm / s'),
+        Util.getItem(
+            FontAwesomeIcons.cloudRain, snapshot.data!.list![0].humidity!, '%'),
+        Util.getItem(FontAwesomeIcons.wind,
+            snapshot.data!.list![0].speed!.toInt(), 'm / s'),
       ],
     );
   }

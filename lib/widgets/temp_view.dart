@@ -19,14 +19,14 @@ class TempView extends StatelessWidget {
               '${snapshot.data!.list![0].temp!.day!.toStringAsFixed(0)}°C',
               style: const TextStyle(
                 fontSize: 60.0,
-                color: Colors.black87,
+                color: Colors.white,
               ),
             ),
             Text(
               snapshot.data!.list![0].weather![0].description!.toUpperCase(),
               style: const TextStyle(
                 fontSize: 16.0,
-                color: Colors.black87,
+                color: Colors.white,
               ),
             ),
           ],
@@ -35,5 +35,3 @@ class TempView extends StatelessWidget {
     );
   }
 }
-
-
