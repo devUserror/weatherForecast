@@ -32,15 +32,15 @@ Widget forecastCard(AsyncSnapshot snapshot, int index) {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '${snapshot.data!.list![index].temp.min.toStringAsFixed(0)}°C',
+                      '${snapshot.data!.list![index].temp.min.toStringAsFixed(0)}-${snapshot.data!.list![index].temp.max.toStringAsFixed(0)}°C',
                       style: const TextStyle(
-                        fontSize: 30.0,
+                        fontSize: 25.0,
                         color: Colors.blueGrey,
                       ),
                     ),
                   ),
                   Image.network(snapshot.data!.list![index].getIconUrl(),
-                      scale: 1.2),
+                      scale: 1.4),
                 ],
               ),
             ],
